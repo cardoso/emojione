@@ -8,8 +8,12 @@
 import Foundation
 
 struct Emojione {
-    static let values = [
+    private static let values = [
         <%= mapping %>
+    ]
+
+    private static let categories = [
+        <%= categories %>
     ]
     
     static func transform(string: String) -> String {
