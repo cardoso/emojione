@@ -8,11 +8,11 @@
 import Foundation
 
 struct Emojione {
-    private static let values = [
+    static let values = [
         <%= mapping %>
     ]
 
-    private static let categories = [
+    static let categories: [String: [(shortname: String, supportsTones: Bool)]] = [
         <%= categories %>
     ]
     
