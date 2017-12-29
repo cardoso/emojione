@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Emoji {
+struct Emoji: Codable {
     let name: String
     let shortname: String
     let supportsTones: Bool
@@ -4336,18 +4336,8 @@ struct Emojione {
             Emoji("ten-thirty", ":clock1030:", false, [], ["10", "10:30", "30", "clock", "ten", "thirty"]),
             Emoji("eleven-thirty", ":clock1130:", false, [], ["11", "11:30", "30", "clock", "eleven", "thirty"]),
             Emoji("twelve-thirty", ":clock1230:", false, [], ["12", "12:30", "30", "clock", "thirty", "twelve"]),
-            Emoji("asterisk", ":asterisk_symbol:", false, [], [""]),
-            Emoji("pound symbol", ":pound_symbol:", false, [], [""]),
-            Emoji("digit nine", ":digit_nine:", false, [], [""]),
-            Emoji("digit eight", ":digit_eight:", false, [], [""]),
-            Emoji("digit seven", ":digit_seven:", false, [], [""]),
             Emoji("digit six", ":digit_six:", false, [], [""]),
-            Emoji("digit five", ":digit_five:", false, [], [""]),
-            Emoji("digit four", ":digit_four:", false, [], [""]),
-            Emoji("digit three", ":digit_three:", false, [], [""]),
-            Emoji("digit two", ":digit_two:", false, [], [""]),
-            Emoji("digit one", ":digit_one:", false, [], [""]),
-            Emoji("digit zero", ":digit_zero:", false, [], [""]),],
+            Emoji("digit five", ":digit_five:", false, [], [""]),],
 
     static let objects: [Emoji] = [
             Emoji("keyboard", ":keyboard:", false, [], ["computer"]),
@@ -4696,9 +4686,6 @@ struct Emojione {
             Emoji("umbrella", ":umbrella2:", false, [], ["clothing", "rain"]),
             Emoji("skull and crossbones", ":skull_crossbones:", false, [":skull_and_crossbones:"], ["crossbones", "death", "face", "monster", "skull"]),
             Emoji("frowning face", ":frowning2:", false, [":white_frowning_face:"], ["face", "frown"]),
-            Emoji("female sign", ":female_sign:", false, [], ["woman"]),
-            Emoji("male sign", ":male_sign:", false, [], ["man"]),
-            Emoji("medical symbol", ":medical_symbol:", false, [], ["aesculapius", "medicine", "staff"]),
             Emoji("grinning face", ":grinning:", false, [], ["face", "grin"]),
             Emoji("smiling face with open mouth", ":smiley:", false, [], ["face", "mouth", "open", "smile"]),
             Emoji("smiling face with open mouth & smiling eyes", ":smile:", false, [], ["eye", "face", "mouth", "open", "smile"]),
@@ -4842,7 +4829,6 @@ struct Emojione {
             Emoji("man", ":man:", true, [], ["man"]),
             Emoji("woman", ":woman:", true, [], ["woman"]),
             Emoji("blond-haired woman", ":blond-haired_woman:", true, [], ["blonde", "woman"]),
-            Emoji("blond-haired person", ":blond_haired_person:", true, [":person_with_blond_hair:"], ["blond"]),
             Emoji("blond-haired man", ":blond-haired_man:", true, [], ["blond", "man"]),
             Emoji("old man", ":older_man:", true, [], ["man", "old"]),
             Emoji("old woman", ":older_woman:", true, [":grandma:"], ["old", "woman"]),
@@ -5007,7 +4993,6 @@ struct Emojione {
             Emoji("woman with headscarf", ":woman_with_headscarf:", true, [], [""]),
             Emoji("brain", ":brain:", false, [], ["intelligent"]),
             Emoji("billed cap", ":billed_cap:", false, [], ["baseball cap"]),
-            Emoji("merperson", ":merperson:", true, [], ["mermaid", "merman", "merwoman"]),
             Emoji("scarf", ":scarf:", false, [], ["neck"]),
             Emoji("gloves", ":gloves:", false, [], ["hand"]),
             Emoji("coat", ":coat:", false, [], ["jacket"]),
