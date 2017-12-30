@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Emoji: Codable {
-    let name: String
-    let shortname: String
-    let supportsTones: Bool
-    let alternates: [String]
-    let keywords: [String]
+public struct Emoji: Codable {
+    public let name: String
+    public let shortname: String
+    public let supportsTones: Bool
+    public let alternates: [String]
+    public let keywords: [String]
 
-    init(_ name: String, _ shortname: String, _ supportsTones: Bool, _ alternates: [String], _ keywords: [String]) {
+    public init(_ name: String, _ shortname: String, _ supportsTones: Bool, _ alternates: [String], _ keywords: [String]) {
         self.name = name
         self.shortname = shortname
         self.supportsTones = supportsTones
@@ -25,26 +25,27 @@ struct Emoji: Codable {
 
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length
-struct Emojione {
-    static let values = [
+public extension Emoji {
+    public static let shortnameRegex = try? NSRegularExpression(pattern: "<%= regex %>", options: [])
+
+    public static let shortnameToUnicodeDictionary = [
         <%= mapping %>
     ]
 
     <%= categories %>
     
-    static func transform(string: String) -> String {
+    static func transform(_ string: String) -> String {
         let oldString = string as NSString
         var transformedString = string as NSString
 
-        let regex = try? NSRegularExpression(pattern: ":([-+\\w]+):", options: [])
-        let matches = regex?.matches(in: transformedString as String, options: [], range: NSRange(location: 0, length: transformedString.length)) ?? []
+        let matches = shortnameRegex?.matches(in: transformedString as String, options: [], range: NSRange(location: 0, length: transformedString.length)) ?? []
 
         for result in matches {
             guard result.numberOfRanges == 2 else { continue }
 
-            let shortname = oldString.substring(with: result.range(at: 1))
-            if let emoji = values[shortname] {
-                transformedString = transformedString.replacingOccurrences(of: ":\(shortname):", with: emoji) as NSString
+            let shortname = oldString.substring(with: result.range(at: 0))
+            if let emoji = shortnameToUnicodeDictionary[shortname] {
+                transformedString = transformedString.replacingOccurrences(of: shortname, with: emoji) as NSString
             }
         }
 
